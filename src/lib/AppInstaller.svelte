@@ -4,6 +4,7 @@
 	let deferredInstallEvent: BeforeInstallPromptEvent | undefined
 
 	function captureInstallPromptEvent(event: Event) {
+		event.preventDefault()
 		deferredInstallEvent = event as BeforeInstallPromptEvent
 	}
 
