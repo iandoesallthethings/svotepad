@@ -2,6 +2,7 @@
 	import { onMount, onDestroy } from 'svelte'
 	import { Editor } from '@tiptap/core'
 	import StarterKit from '@tiptap/starter-kit'
+	import RichTextControls from './RichTextControls.svelte'
 
 	export let content: string = ''
 
@@ -13,49 +14,18 @@
 			element: element,
 			extensions: [StarterKit],
 			content,
-			onTransaction: () => {
-				editor = editor
-				content = editor.getHTML()
-			}
+			onTransaction: () => (content = editor.getHTML())
 		})
-	})
 
-	onDestroy(() => {
-		if (editor) editor.destroy()
+		return () => editor.destroy()
 	})
 </script>
 
-{#if editor}
-	<div>
-		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-			class:active={editor.isActive('heading', { level: 1 })}
-		>
-			H1
-		</button>
-		<button
-			on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-			class:active={editor.isActive('heading', { level: 2 })}
-		>
-			H2
-		</button>
-		<button
-			on:click={() => editor.chain().focus().setParagraph().run()}
-			class:active={editor.isActive('paragraph')}
-		>
-			P
-		</button>
-	</div>
-{/if}
-
-<div id="editor" bind:this={element} />
+<RichTextControls {editor} />
+<div id="editor" class="h-full" bind:this={element} />
 
 <style>
 	:global(.tiptap) {
-		@apply border border-black h-80 p-2;
-	}
-
-	button.active {
-		@apply bg-blue-300;
+		@apply border h-full px-2 py-2 ring-0;
 	}
 </style>

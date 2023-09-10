@@ -1,0 +1,14 @@
+{
+	"name": "Svotepad",
+	"version": "1.0",
+	"display": "standalone",
+	"id": "com.svotepad",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "/favicon.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		}
+	]
+}
