@@ -30,7 +30,7 @@
 
 <main class="flex flex-col h-[100dvh]">
 	{#if deferredInstallEvent}
-		<button on:click={install}>Install</button>
+		<button class="absolute top-4 right-4" on:click={install}>Install</button>
 	{/if}
 
 	<slot />
