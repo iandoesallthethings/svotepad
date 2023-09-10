@@ -63,7 +63,12 @@
 			{/if}
 
 			{#if $documents[currentDocument].tabs.length > 1}
-				<button class="p-0 hidden group-hover:inline" on:click={() => removeTab(index)}> x </button>
+				<button
+					class="p-0 hidden group-hover:inline"
+					on:click|stopPropagation={() => removeTab(index)}
+				>
+					x
+				</button>
 			{/if}
 		</button>
 	{/each}
