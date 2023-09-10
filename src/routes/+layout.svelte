@@ -6,11 +6,15 @@
 	let deferredInstallEvent: Event | undefined
 
 	onMount(() => {
+		console.debug('adding event listener')
 		window.addEventListener('beforeinstallprompt', (event) => {
+			console.debug('beforeinstallprompt', event)
 			event.preventDefault()
 			deferredInstallEvent = event
 		})
 	})
+
+	$: console.debug(deferredInstallEvent)
 
 	async function install() {
 		deferredInstallEvent.prompt()
