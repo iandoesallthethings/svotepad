@@ -26,6 +26,6 @@
 
 <style>
 	:global(.tiptap) {
-		@apply border h-full px-2 py-2 ring-0;
+		@apply border h-full px-2 py-2 outline-none;
 	}
 </style>
