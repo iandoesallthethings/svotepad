@@ -21,6 +21,7 @@
 			currentTab = $documents[currentDocument].tabs.length - 1
 		}
 	}
+
 	function renameDocument() {
 		const newName = prompt('Rename document', $documents[currentDocument].name)
 		if (newName) $documents[currentDocument].name = newName
@@ -61,9 +62,9 @@
 				Tab {index + 1}
 			{/if}
 
-			<!-- {#if $documents[currentDocument].tabs.length > 1}
+			{#if $documents[currentDocument].tabs.length > 1}
 				<button class="p-0 hidden group-hover:inline" on:click={() => removeTab(index)}> x </button>
-			{/if} -->
+			{/if}
 		</button>
 	{/each}
 
