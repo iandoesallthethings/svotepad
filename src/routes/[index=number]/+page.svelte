@@ -6,8 +6,6 @@
 	$: currentDocument = parseInt($page.params.index)
 	let currentTab = 0
 
-	$: console.debug($documents, currentDocument, currentTab)
-
 	function selectTab(index: number) {
 		currentTab = index
 	}
@@ -30,17 +28,17 @@
 		if (newName) $documents[currentDocument].tabs[index].name = newName
 	}
 
-	interface DialogElement extends HTMLDialogElement {
-		show: () => void
-		showModal: () => void
-		close: () => void
+	function getDialog(id: string) {
+		return document.getElementById(id) as HTMLDialogElement
 	}
+
 	function openDialog(index: number) {
-		const dialog = document.getElementById(`more-${index}`) as DialogElement
+		const dialog = getDialog(`more-${index}`)
 		dialog.show()
 	}
+
 	function closeDialog(index: number) {
-		const dialog = document.getElementById(`more-${index}`) as DialogElement
+		const dialog = getDialog(`more-${index}`)
 		dialog.close()
 	}
 </script>
