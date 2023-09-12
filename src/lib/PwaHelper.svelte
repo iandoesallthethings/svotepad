@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import { version, dev } from '$app/environment'
-	import * as LocalStorage from '$lib/LocalStorage'
+	import * as LocalStorage from '$lib/stores/LocalStorage'
 
 	onMount(checkVersion)
 

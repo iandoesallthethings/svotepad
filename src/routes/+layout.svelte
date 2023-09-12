@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.postcss'
 	import { page } from '$app/stores'
-	import documents from '$lib/Documents'
+	import documents from '$lib/stores/Documents'
 	import PWA from '$lib/PwaHelper.svelte'
 	import * as Urls from '$lib/Urls'
 

@@ -1,9 +1,7 @@
 import type { Writable, LocalStorageWritable } from '$types'
 import { writable, type Updater } from 'svelte/store'
-import * as LocalStorage from '$lib/LocalStorage'
-import * as SessionStorage from '$lib/SessionStorage'
-
-
+import * as LocalStorage from '$lib/stores/LocalStorage'
+import * as SessionStorage from '$lib/stores/SessionStorage'
 
 export default function createLocalStorageWritable<Value>(
 	key: string,
@@ -52,11 +50,13 @@ export default function createLocalStorageWritable<Value>(
 		set,
 		update,
 		reset,
-		remove,
+		remove
 	}
 }
 
 // A way to make a copy of any object that can be stringified and then re-parsed as JSON.
-  function cloneIfCanBeStringified<ObjectThatCanBeStringified>(obj: ObjectThatCanBeStringified): ObjectThatCanBeStringified {
+function cloneIfCanBeStringified<ObjectThatCanBeStringified>(
+	obj: ObjectThatCanBeStringified
+): ObjectThatCanBeStringified {
 	return JSON.parse(JSON.stringify(obj))
 }

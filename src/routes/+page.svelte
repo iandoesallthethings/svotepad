@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import documents, { newDocument } from '$lib/Documents'
+	import documents, { newDocument } from '$lib/stores/Documents'
 	import Device from 'svelte-device-info'
+	import IndexedDocuments from '$lib/stores/IndexedDocuments'
+
+	IndexedDocuments
 
 	$: isTouchDevice = browser ? Device.isMobile : false
 

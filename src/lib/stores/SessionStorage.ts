@@ -1,6 +1,6 @@
 import { browser } from '$app/environment'
 
-export function set(key: string, value: any) {
+export function set<T>(key: string, value: T) {
 	if (!browser) return
 
 	const stringified = JSON.stringify(value)
