@@ -22,10 +22,5 @@
 </script>
 
 <RichTextControls {editor} />
-<div id="editor" class="h-full" bind:this={element} />
 
-<style>
-	:global(.tiptap) {
-		@apply border h-full px-2 py-2 outline-none;
-	}
-</style>
+<div id="editor" class="h-full" bind:this={element} />
