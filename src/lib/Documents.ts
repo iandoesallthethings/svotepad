@@ -1,10 +1,10 @@
 import LocalStorageWritable from './localStorageWritable'
 import type { Document, Tab } from '$types'
 
-export default LocalStorageWritable<Document[]>('documents', [newDocument()], [newDocument()])
+export default LocalStorageWritable<Document[]>('documents', [], [])
 
-export function newDocument(): Document {
-	return { name: 'untitled', tabs: [newTab()] }
+export function newDocument(name = 'untitled'): Document {
+	return { name, tabs: [newTab()] }
 }
 
 export function newTab(): Tab {

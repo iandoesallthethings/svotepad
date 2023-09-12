@@ -3,8 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-button {
-	@apply py-1 px-4 hover:bg-black/10 min-w-[32px];
+button,
+a[role='button'] {
+	@apply py-1 px-4 hover:bg-black/10 min-w-[32px] text-center;
 }
 
 button.active {
