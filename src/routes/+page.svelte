@@ -22,7 +22,7 @@
 	}
 </script>
 
-<h3 class="text-center font-bold">Documents</h3>
+<h2 class="text-center font-bold">Documents</h2>
 
 <hr class="my-4" />
 
@@ -31,7 +31,7 @@
 {/if}
 
 {#each $documents as document, index}
-	<a role="button" href={`/${index}`} class="group relative flex items-center justify-center">
+	<a role="button" href={`/${index}`} class="group relative flex items-center justify-center h-12">
 		{document.name}
 
 		<div class:!block={isTouchDevice} class="absolute right-0 hidden group-hover:block">
@@ -41,4 +41,4 @@
 	</a>
 {/each}
 
-<button on:click={createDocument}>+</button>
+<button class="h-12" on:click={createDocument}>+</button>

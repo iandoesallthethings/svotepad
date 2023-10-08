@@ -11,12 +11,10 @@
 	}
 </script>
 
-<PWA />
-
 <main class="flex flex-col h-[100dvh]">
 	<div class="flex items-center">
 		<a href="/" class=" p-2 gap-3 flex items-center">
-			<img src="/favicon.png" alt="Svotepad" class="h-8 rounded-full" />
+			<img src="/favicon.png" alt="Svotepad" class="h-8 w-8 rounded-full" />
 
 			{#if $page.route.id !== Urls.editorPage()}
 				<h1 class="inline-block">Svotepad</h1>
@@ -33,3 +31,5 @@
 
 	<slot />
 </main>
+
+<PWA />
