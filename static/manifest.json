@@ -10,6 +10,12 @@
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "any maskable"
+		},
+		{
+			"src": "/favicon-mono.png",
+			"sizes": "24x24",
+			"type": "image/png",
+			"purpose": "monochrome"
 		}
 	]
 }
