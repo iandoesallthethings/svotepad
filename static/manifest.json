@@ -4,6 +4,8 @@
 	"display": "standalone",
 	"id": "com.svotepad",
 	"start_url": "/",
+	"background_color": "white",
+	"theme_color": "black",
 	"icons": [
 		{
 			"src": "/favicon-mono.png",
