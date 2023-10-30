@@ -14,7 +14,13 @@
 			element: element,
 			extensions: [StarterKit],
 			content,
-			onTransaction: () => (content = editor.getHTML())
+			onTransaction: () => (content = editor.getHTML()),
+			editorProps: {
+				attributes: {
+					class:
+						'border h-full p-2 prose dark:prose-invert dark:bg-black prose-sm sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none'
+				}
+			}
 		})
 
 		return () => editor.destroy()

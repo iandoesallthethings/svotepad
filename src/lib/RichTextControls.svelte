@@ -35,5 +35,31 @@
 		>
 			<em>I</em>
 		</button>
+
+		<button
+			name="toggleBulletList"
+			on:click={() => editor.chain().focus().toggleBulletList().run()}
+			class:active={editor.isActive('bulletList')}
+		>
+			toggle list
+		</button>
+		<button
+			on:click={() => editor.chain().focus().splitListItem('listItem').run()}
+			disabled={!editor.can().splitListItem('listItem')}
+		>
+			splitListItem
+		</button>
+		<button
+			on:click={() => editor.chain().focus().sinkListItem('listItem').run()}
+			disabled={!editor.can().sinkListItem('listItem')}
+		>
+			sinkListItem
+		</button>
+		<button
+			on:click={() => editor.chain().focus().liftListItem('listItem').run()}
+			disabled={!editor.can().liftListItem('listItem')}
+		>
+			liftListItem
+		</button>
 	</div>
 {/if}

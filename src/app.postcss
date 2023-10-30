@@ -12,6 +12,10 @@ button.active {
 	@apply !bg-blue-500/20 hover:!bg-blue-300/20;
 }
 
+button.disabled {
+	@apply !text-gray-500 cursor-not-allowed;
+}
+
 h1 {
 	@apply text-2xl;
 }
@@ -30,8 +34,4 @@ h4 {
 
 h5 {
 	@apply text-sm;
-}
-
-.tiptap {
-	@apply border h-full px-2 py-2 outline-none;
 }

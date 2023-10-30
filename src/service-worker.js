@@ -1,8 +1,9 @@
+/// <reference lib="webworker" />
 import { build, files, prerendered, version } from '$service-worker'
 
-const worker = self
+/** @type {ServiceWorkerGlobalScope} */
+const worker = /**@type {any} */ (self)
 const FILES = `cache-${version}`
-
 const toCache = [...build, ...files, ...prerendered]
 const staticAssets = new Set(toCache)
 
@@ -56,6 +57,8 @@ worker.addEventListener('fetch', (event) => {
 	url.fragment = ''
 	const cleanRequest = new Request(url)
 
-	if (isHttp && !isDevServerRequest && !skipBecauseUncached)
-		event.respondWith((isStaticAsset && caches.match(cleanRequest)) || fetchAndCache(cleanRequest))
+	if (isHttp && !isDevServerRequest && !skipBecauseUncached) {
+		const cachedStaticAsset = isStaticAsset && caches.match(cleanRequest)
+		event.respondWith(cachedStaticAsset || fetchAndCache(cleanRequest))
+	}
 })
