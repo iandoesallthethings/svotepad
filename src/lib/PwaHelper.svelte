@@ -14,7 +14,6 @@
 
 		const lastVersion = LocalStorage.get('version')
 
-		console.debug(lastVersion)
 		if (lastVersion == null) {
 			welcome.showModal()
 		} else if (lastVersion !== version) {
@@ -22,6 +21,7 @@
 		}
 
 		LocalStorage.set('version', version)
+		console.log('App version', version)
 	}
 
 	function captureInstallPromptEvent(event: Event) {
@@ -79,7 +79,7 @@
 			automatically.
 		</p>
 
-		<p class="text-center text-sm text-gray-500">Version: {version}</p>
+		<p class="text-center text-sm text-zinc-500">Version: {version}</p>
 
 		<button on:click={() => changelog.close()} class="self-end">OK</button>
 	</div>

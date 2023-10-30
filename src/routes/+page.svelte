@@ -27,7 +27,7 @@
 <hr class="my-4" />
 
 {#if $documents.length === 0}
-	<p class="text-center text-gray-500">No documents</p>
+	<p class="text-center text-zinc-500">No documents</p>
 {/if}
 
 {#each $documents as document, index}

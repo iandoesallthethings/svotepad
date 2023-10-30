@@ -18,7 +18,7 @@
 			editorProps: {
 				attributes: {
 					class:
-						'border h-full p-2 prose dark:prose-invert dark:bg-black prose-sm sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none'
+						'border-y border-zinc-800/10 dark:border-zinc-300/40 h-full !max-w-full p-2 prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl focus:outline-none'
 				}
 			}
 		})
@@ -27,6 +27,8 @@
 	})
 </script>
 
-<RichTextControls {editor} />
+{#if editor}
+	<RichTextControls {editor} />
+{/if}
 
 <div id="editor" class="h-full" bind:this={element} />

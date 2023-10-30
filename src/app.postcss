@@ -3,17 +3,21 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	@apply bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-300;
+}
+
 button,
 a[role='button'] {
-	@apply py-1 px-4 hover:bg-black/10 min-w-[32px] text-center;
+	@apply py-1 px-4 hover:bg-zinc-300/10 min-w-[32px] text-center;
 }
 
 button.active {
 	@apply !bg-blue-500/20 hover:!bg-blue-300/20;
 }
 
-button.disabled {
-	@apply !text-gray-500 cursor-not-allowed;
+button:disabled {
+	@apply !text-zinc-500 cursor-not-allowed;
 }
 
 h1 {

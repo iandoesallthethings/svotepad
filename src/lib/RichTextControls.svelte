@@ -1,10 +1,21 @@
 <script lang="ts">
+	import { onMount } from 'svelte'
 	import type { Editor } from '@tiptap/core'
+	import lastActiveNodes from '$lib/tiptapHelpers'
+	import Icon from 'svelte-awesome'
+	import { faList, faListNumeric, faIndent, faOutdent } from '@fortawesome/free-solid-svg-icons'
 
 	export let editor: Editor
+
+	let lastUpdated = new Date()
+
+	onMount(() => {
+		editor.on('selectionUpdate', () => (lastUpdated = new Date()))
+		return () => editor.off('selectionUpdate')
+	})
 </script>
 
-{#if editor}
+{#key lastUpdated}
 	<div class="flex">
 		<button
 			name="h1"
@@ -37,29 +48,30 @@
 		</button>
 
 		<button
+			name="toggleNumberList"
+			on:click={() => editor.chain().focus().toggleOrderedList().run()}
+			class:active={lastActiveNodes(editor, [{ type: 'orderedList' }]).length > 0}
+		>
+			<Icon data={faListNumeric} />
+		</button>
+		<button
 			name="toggleBulletList"
 			on:click={() => editor.chain().focus().toggleBulletList().run()}
-			class:active={editor.isActive('bulletList')}
+			class:active={lastActiveNodes(editor, [{ type: 'bulletList' }]).length > 0}
 		>
-			toggle list
-		</button>
-		<button
-			on:click={() => editor.chain().focus().splitListItem('listItem').run()}
-			disabled={!editor.can().splitListItem('listItem')}
-		>
-			splitListItem
-		</button>
-		<button
-			on:click={() => editor.chain().focus().sinkListItem('listItem').run()}
-			disabled={!editor.can().sinkListItem('listItem')}
-		>
-			sinkListItem
+			<Icon data={faList} />
 		</button>
 		<button
 			on:click={() => editor.chain().focus().liftListItem('listItem').run()}
 			disabled={!editor.can().liftListItem('listItem')}
 		>
-			liftListItem
+			<Icon data={faOutdent} />
+		</button>
+		<button
+			on:click={() => editor.chain().focus().sinkListItem('listItem').run()}
+			disabled={!editor.can().sinkListItem('listItem')}
+		>
+			<Icon data={faIndent} />
 		</button>
 	</div>
-{/if}
+{/key}
